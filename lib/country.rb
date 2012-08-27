@@ -1,5 +1,5 @@
 module Phoner
-  class Country < Struct.new(:name, :country_code, :char_2_code, :area_code)
+  class Country < Struct.new(:name, :country_code, :char_2_code, :char_3_code, :area_code)
     cattr_accessor :all
 
     def self.load
@@ -9,7 +9,7 @@ module Phoner
 
       @@all = {}
       YAML.load(File.read(data_file)).each_pair do |key, c|
-        @@all[key] = Country.new(c[:name], c[:country_code], c[:char_2_code], c[:area_code])
+        @@all[key] = Country.new(c[:name], c[:country_code], c[:char_2_code], c[:char_3_code], c[:area_code])
       end
       @@all
     end
